@@ -1,4 +1,6 @@
-
+import numpy as np
+import torch
+from PIL import Image, ImageFilter, ImageEnhance, ImageOps, ImageDraw, ImageChops, ImageFont
 
 class ColorPalette:
     def __init__(self):
@@ -25,7 +27,6 @@ class ColorPalette:
             ii = i.replace("\n", "").strip()
             if len(i)>0:
                 treated.append(ii)
-        print("arranged: ",treated)
 
         closest_color = []
         color_list_final = ""
@@ -45,11 +46,23 @@ class ColorPalette:
             color_list_final += res[-1][1][0]+", "
 
 
+        numofcolors = len(closest_color)
 
-        restriction_statement = f"The colors are restricted to following {len(closest_color)} colors: {color_list_final}"
+        restriction_statement = f"The colors are restricted to following {numofcolors} colors: {color_list_final}"
         print(restriction_statement)
 
 
         text_out = prompt + "\n" + restriction_statement
 
-        return (text_out,)
+        image_width = 64*numofcolors
+        image_height = 64
+        background_color = "#ffffff"
+
+        canvas = Image.new("RGBA", (image_width, image_height), background_color)
+
+        draw = ImageDraw.Draw(canvas)
+        for i in range(numofcolors):
+            draw.rectangle([(64*i, 0), (64*(i+1), 64)], fill=(closest_color[i][1][1]))
+        image_out = torch.from_numpy(np.array(canvas).astype(np.float32) / 255.0).unsqueeze(0)
+
+        return (text_out, image_out)
