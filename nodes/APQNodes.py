@@ -13,7 +13,8 @@ class ColorPalette:
             "hexcodes": ("STRING", {"multiline": False, "default": "World", "forceInput":True}),}
         }
 
-    RETURN_TYPES = ("STRING",)
+    RETURN_TYPES = ("STRING", "IMAGE",)
+    RETURN_NAMES = ("prompt", "color_palettes",)
     FUNCTION = "color_picker"
     CATEGORY = "APQNodes/Color"
 
