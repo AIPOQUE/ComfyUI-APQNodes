@@ -13,7 +13,7 @@ class ColorPalette:
 
     RETURN_TYPES = ("STRING",)
     FUNCTION = "color_picker"
-    CATEGORY = "Tutorial Nodes"
+    CATEGORY = "APQNodes/Color"
 
     def color_picker(self, prompt, hexcodes):
 
@@ -53,7 +53,3 @@ class ColorPalette:
         text_out = prompt + "\n" + restriction_statement
 
         return (text_out,)
-
-
-    CATEGORY = "Color"
-
