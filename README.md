@@ -14,14 +14,12 @@ Clone this repo into `custom_nodes` folder.
 
 ##Usage 
 ‘ColorPalette’ node consists of two inputs and two outputs.
-![ColorPalette Node]https://github.com/AIPOQUE/ComfyUI-APQNodes/blob/main/src/ColorPalette_nodes_info.jpg
+![ColorPalette Node](https://github.com/AIPOQUE/ComfyUI-APQNodes/blob/main/src/ColorPalette_nodes_info.jpg)
 
-*Inputs
+* Inputs
+    * prompt : User text prompt
+    * hexcodes : any text hex color codes without any delimiter. For example,  #FF0000 #00FF00 #0000FF can generate color palette consisting of 3 colors(RED, BLUE, GREEN) 
 
-1.prompt : User text prompt
-2.hexcodes : any text hex color codes without any delimiter. For example,  #FF0000 #00FF00 #0000FF can generate color palette consisting of 3 colors(RED, BLUE, GREEN) 
-
-*Outputs
-
-1. Prompt : Text prompt(User text prompt with color palettes applied) to connect to CLIP Text Encode.
-2. solor_palettes : Image of generated color palette
+* Outputs
+    * Prompt : Text prompt(User text prompt with color palettes applied) to connect to CLIP Text Encode.
+    * solor_palettes : Image of generated color palette
